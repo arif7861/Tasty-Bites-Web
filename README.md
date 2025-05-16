@@ -6,13 +6,39 @@ Welcome to the Food Delivery Website repository created by Arif! 🍽️
 
 This project is a dynamic and user-friendly food delivery website developed using HTML, CSS, and JavaScript. It offers an immersive experience for users to browse, select, and order from a wide range of culinary options.
 
+## Run Guidance
+
+To run this project locally:
+
+1. Clone the repository:
+```
+git clone git@github.com:arif7861/Tasty-Bites-Website.git
+```
+2. Navigate to the project directory:
+```
+cd Tasty-Bites-Website
+```
+3. Open the `index.html` file in your preferred web browser. You can do this by double-clicking the file or opening it via the browser's "Open File" option.
+
+No additional environment setup or dependencies are required as this is a static website.
+
+## Environment
+
+- This is a static website built with:
+  - HTML
+  - CSS
+  - JavaScript
+- No backend or database is required.
+- Compatible with modern web browsers.
+
 ## Screenshots
-![image](https://github.com/Sweety-Vigneshg/Food-Delivery-Website/blob/f3471fcfa680d8dbebc8ccb3ab69bda7588d9413/Sample/food%20delivery%20website%20home.png)
-![image](https://github.com/Sweety-Vigneshg/Food-Delivery-Website/blob/f3471fcfa680d8dbebc8ccb3ab69bda7588d9413/Sample/food%20delivery%20website%20special.png)
-![image](https://github.com/Sweety-Vigneshg/Food-Delivery-Website/blob/f3471fcfa680d8dbebc8ccb3ab69bda7588d9413/Sample/food%20delivery%20website%20gallery.png)
-![image](https://github.com/Sweety-Vigneshg/Food-Delivery-Website/blob/f3471fcfa680d8dbebc8ccb3ab69bda7588d9413/Sample/food%20delivery%20website%20review.png)
-![image](https://github.com/Sweety-Vigneshg/Food-Delivery-Website/blob/f3471fcfa680d8dbebc8ccb3ab69bda7588d9413/Sample/food%20delivery%20website%20footerorders.png)
-![image](https://github.com/Sweety-Vigneshg/Food-Delivery-Website/blob/f3471fcfa680d8dbebc8ccb3ab69bda7588d9413/Sample/food%20delivery%20website%20footer.png)
+
+![Home](Sample/food delivery website home.png)
+![Special](Sample/food delivery website special.png)
+![Gallery](Sample/food delivery website gallery.png)
+![Review](Sample/food delivery website review.png)
+![Footer Orders](Sample/food delivery website footerorders.png)
+![Footer](Sample/food delivery website footer.png)
 
 ## Features
 
@@ -29,5 +55,3 @@ This project is a dynamic and user-friendly food delivery website developed usin
 - HTML
 - CSS
 - JavaScript
-
-# Tasty-Bites-Website
