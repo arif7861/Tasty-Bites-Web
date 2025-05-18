@@ -1,0 +1,17 @@
+export const foodItems = [
+  { id: 1, name: 'Paneer Butter Masala', price: 100, image: '../images/Paneer Butter Masala.jpeg' },
+  { id: 2, name: 'Chicken Biryani', price: 110, image: '../images/Chicken Biryani.jpeg' },
+  { id: 5, name: 'Dal Makhani', price: 90, image: '../images/Dal Makhani.jpeg' },
+  { id: 6, name: 'Chole Bhature', price: 80, image: '../images/Chole Bhature.jpeg' },
+  { id: 7, name: 'Masala Dosa', price: 70, image: '../images/Masala Dosa.jpeg' },
+  { id: 8, name: 'Butter Chicken', price: 120, image: '../images/Butter Chicken.jpeg' },
+  { id: 9, name: 'Fish Curry', price: 130, image: '../images/Fish Curry.jpeg' },
+  { id: 10, name: 'Veg Manchurian', price: 85, image: '../images/Veg Manchurian.jpeg' },
+  { id: 11, name: 'Pav Bhaji', price: 75, image: '../images/Pav Bhaji.jpeg' },
+  { id: 12, name: 'Tandoori Chicken', price: 140, image: '../images/Tandoori Chicken.jpeg' },
+  { id: 13, name: 'Rajma Chawal', price: 80, image: '../images/Rajma Chawal.jpeg' },
+  { id: 14, name: 'Aloo Paratha', price: 60, image: '../images/Aloo Paratha.jpeg' },
+  { id: 15, name: 'Samosa', price: 40, image: '../images/Samosa.jpeg' },
+  { id: 16, name: 'Idli Sambhar', price: 50, image: '../images/Idli Sambhar.jpeg' },
+  { id: 17, name: 'Vada Pav', price: 45, image: '../images/Vada Pav.jpeg' },
+];

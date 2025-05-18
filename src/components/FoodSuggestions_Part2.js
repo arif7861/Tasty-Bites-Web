@@ -1,0 +1,17 @@
+export const moreFoodItems = [
+  { id: 3, name: 'Veg Pulao', price: 120, image: '../images/Veg Pulao.jpeg' },
+  { id: 4, name: 'Butter Naan', price: 130, image: '../images/Butter Naan.jpeg' },
+  { id: 18, name: 'Paneer Tikka', price: 110, image: '../images/Paneer Tikka.jpeg' },
+  { id: 19, name: 'Chicken Tikka', price: 140, image: '../images/Chicken Tikka.jpeg' },
+  { id: 20, name: 'Mutton Curry', price: 150, image: '../images/Mutton Curry.jpeg' },
+  { id: 21, name: 'Fish Fry', price: 160, image: '../images/Fish Fry.jpeg' },
+  { id: 22, name: 'Veg Biryani', price: 100, image: '../images/Veg Biryani.jpeg' },
+  { id: 23, name: 'Egg Curry', price: 90, image: '../images/Egg Curry.jpeg' },
+  { id: 24, name: 'Chicken 65', price: 130, image: '../images/Chicken 65.jpeg' },
+  { id: 25, name: 'Prawn Curry', price: 170, image: '../images/Prawn Curry.jpeg' },
+  { id: 26, name: 'Masala Chai', price: 30, image: '../images/Masala Chai.jpeg' },
+  { id: 27, name: 'Lassi', price: 40, image: '../images/Lassi.jpeg' },
+  { id: 28, name: 'Gulab Jamun', price: 50, image: '../images/Gulab Jamun.jpeg' },
+  { id: 29, name: 'Rasgulla', price: 45, image: '../images/Rasgulla.jpeg' },
+  { id: 30, name: 'Jalebi', price: 55, image: '../images/Jalebi.jpeg' },
+];
