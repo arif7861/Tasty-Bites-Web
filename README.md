@@ -34,10 +34,10 @@ To run this project locally, follow these steps:
 ## Screenshots
 
 Below are some screenshots of the application (please add the actual screenshot image files named screenshot1.png to screenshot7.png in the images folder):
-![Home](images/screenshot2.png)
-![Profile Details](images/screenshot3.png)
-![Help & Support](images/screenshot4.png)
-![Your Cart](images/screenshot5.png)
-![Order Now](images/screenshot6.png)
-![Login](images/screenshot7.png)
+![Home](./images/screenshot2.png)
+![Profile Details](./images/screenshot3.png)
+![Help & Support](./images/screenshot4.png)
+![Your Cart](./images/screenshot5.png)
+![Order Now](./images/screenshot6.png)
+![Login](./images/screenshot7.png)
 
