@@ -39,6 +39,7 @@ const AppWrapper = () => {
 const App = () => {
   const [user, setUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
+  const [authError, setAuthError] = useState(null);
   const navigate = useNavigate();
 
   const { cartItems, addToCart } = useCart();
@@ -55,22 +56,32 @@ const App = () => {
 
   const handleLogin = async (email, password) => {
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      setUser(userCredential.user);
+      setAuthError(null);
+      await signInWithEmailAndPassword(auth, email, password);
+      const currentUser = auth.currentUser;
+      setUser(currentUser);
       navigate('/');
     } catch (error) {
       console.error('Login error:', error);
+      setAuthError(error.message);
     }
   };
 
   const handleRegister = async ({ name, email, password }) => {
     try {
+      setAuthError(null);
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(userCredential.user, { displayName: name });
-      setUser(userCredential.user);
+      // Reload current user from auth
+      await auth.currentUser.reload();
+      const currentUser = auth.currentUser;
+      setUser(currentUser);
+      // Save profile details to localStorage for Profile component
+      localStorage.setItem(`profileDetails_${email}`, JSON.stringify({ name, email, phone: '' }));
       navigate('/');
     } catch (error) {
       console.error('Registration error:', error);
+      setAuthError(error.message);
     }
   };
 
@@ -101,9 +112,9 @@ const App = () => {
         <Route path="/cart" element={<Cart user={user} />} />
         <Route path="/account" element={<Profile user={user} onLogout={handleLogout} />} />
         <Route path="/help-support" element={<HelpSupport />} />
-        <Route path="/login" element={<LoginComponent onLogin={handleLogin} />} />
-        <Route path="/register" element={<RegisterComponent onRegister={handleRegister} />} />
-        <Route path="/my-orders" element={<RecentOrders />} />
+        <Route path="/login" element={<LoginComponent onLogin={handleLogin} authError={authError} />} />
+        <Route path="/register" element={<RegisterComponent onRegister={handleRegister} authError={authError} />} />
+        <Route path="/my-orders" element={<RecentOrders user={user} />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <FooterWrapper />

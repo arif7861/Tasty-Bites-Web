@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getAuth, updateProfile } from 'firebase/auth';
 import './Profile.css';
 
 const Profile = ({ user, onLogout }) => {
@@ -11,21 +12,22 @@ const Profile = ({ user, onLogout }) => {
 
   useEffect(() => {
     if (user) {
-      setName(user.displayName || '');
-      setEmail(user.email || '');
-      setPhone('');
+      // Load saved profile details from localStorage specific to user email
+      const savedProfile = localStorage.getItem(`profileDetails_${user.email}`);
+      if (savedProfile) {
+        const profile = JSON.parse(savedProfile);
+        setName(profile.name || user.displayName || '');
+        setEmail(profile.email || user.email || '');
+        setPhone(profile.phone || '');
+      } else {
+        setName(user.displayName || '');
+        setEmail(user.email || '');
+        setPhone('');
+      }
     } else {
       setName('');
       setEmail('');
       setPhone('');
-    }
-    // Load saved profile details from localStorage
-    const savedProfile = localStorage.getItem('profileDetails');
-    if (savedProfile) {
-      const profile = JSON.parse(savedProfile);
-      setName(profile.name || '');
-      setEmail(profile.email || '');
-      setPhone(profile.phone || '');
     }
   }, [user]);
 
@@ -38,11 +40,22 @@ const Profile = ({ user, onLogout }) => {
     return null;
   }
 
-  const handleSave = () => {
-    const profile = { name, email, phone };
-    localStorage.setItem('profileDetails', JSON.stringify(profile));
-    setMessage('Profile details saved locally.');
-    setTimeout(() => setMessage(''), 3000);
+  const handleSave = async () => {
+    if (user && user.email) {
+      try {
+        const auth = getAuth();
+        // Update Firebase user profile displayName
+        await updateProfile(auth.currentUser, { displayName: name });
+        // Save profile details to localStorage
+        const profile = { name, email, phone };
+        localStorage.setItem(`profileDetails_${user.email}`, JSON.stringify(profile));
+        setMessage('Profile details saved successfully.');
+        setTimeout(() => setMessage(''), 3000);
+      } catch (error) {
+        setMessage('Failed to save profile details.');
+        setTimeout(() => setMessage(''), 3000);
+      }
+    }
   };
 
   return (
@@ -51,7 +64,7 @@ const Profile = ({ user, onLogout }) => {
         <div className="profile-avatar" style={{ WebkitUserSelect: 'none', userSelect: 'none' }}>
           {user && user.displayName ? user.displayName.charAt(0).toUpperCase() : 'U'}
         </div>
-        <h3 className="profile-username">{user ? user.displayName || email : 'User'}</h3>
+        <h3 className="profile-username">{name || 'User'}</h3>
         <p className="profile-email">{email}</p>
         <button className="profile-button">Profile Details</button>
         <p className="profile-link" onClick={handleMyOrders}>My Orders</p>

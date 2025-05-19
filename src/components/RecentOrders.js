@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
-const RecentOrders = () => {
+const RecentOrders = ({ user }) => {
   const [recentOrders, setRecentOrders] = useState([]);
 
   useEffect(() => {
-    const orders = localStorage.getItem('recentOrders');
-    if (orders) {
-      setRecentOrders(JSON.parse(orders));
+    if (user && user.email) {
+      const orders = localStorage.getItem(`recentOrders_${user.email}`);
+      if (orders) {
+        setRecentOrders(JSON.parse(orders));
+      } else {
+        setRecentOrders([]);
+      }
+    } else {
+      setRecentOrders([]);
     }
-  }, []);
+  }, [user]);
 
   return (
     <section style={{ maxWidth: '700px', margin: '40px auto', padding: '20px', fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" }}>

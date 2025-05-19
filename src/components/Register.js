@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css';
 const foodImage = process.env.PUBLIC_URL + '/images/home-img.png';
 
-const Register = ({ onRegister }) => {
+const Register = ({ onRegister, authError }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (authError) {
+      setError(authError);
+    }
+  }, [authError]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !email || !password) {
       setError('Please fill in all fields.');
       return;
     }
     setError('');
-    // Placeholder for actual registration logic
-    if (onRegister) {
-      onRegister({ name, email, password });
+    try {
+      if (onRegister) {
+        await onRegister({ name, email, password });
+      }
+    } catch (err) {
+      setError(err.message || 'Registration failed. Please try again.');
     }
   };
 

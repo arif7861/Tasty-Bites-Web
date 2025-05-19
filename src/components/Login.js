@@ -1,23 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 const foodImage = process.env.PUBLIC_URL + '/images/home-img.png';
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin, authError }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (authError) {
+      setError(authError);
+    }
+  }, [authError]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
       setError('Please enter both email and password.');
       return;
     }
     setError('');
-    // Placeholder for actual login logic
-    if (onLogin) {
-      onLogin(email, password);
+    try {
+      if (onLogin) {
+        await onLogin(email, password);
+      }
+    } catch (err) {
+      setError(err.message);
     }
   };
 
